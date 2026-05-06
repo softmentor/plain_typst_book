@@ -164,7 +164,11 @@
 
 // PAGE LAYOUT OF CONTENT
   set page(
-    numbering: if show_pagenumber == true {"1"} else {none},         //turn on numbering
+    numbering: none,
+    footer: context if show_pagenumber {
+      set text(size: 8pt)
+      align(center)[Page #counter(page).display() of #counter(page).final().at(0)]
+    },
     margin: (
       top: margin_top,
       bottom: margin_bottom,
